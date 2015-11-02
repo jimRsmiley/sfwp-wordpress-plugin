@@ -9,7 +9,7 @@ Description: This is a plugin to help syncronize Salesforce and Wordpress.
 Version: 0.1
 */
 
-class MySettingsPage
+class SfWpSettingsPage
 {
     /**
      * Holds the values to be used in the fields callbacks
@@ -147,6 +147,6 @@ class MySettingsPage
 }
 
 if( is_admin() )
-    $sfwp_settings_page = new MySettingsPage();
+    $sfwp_settings_page = new SfWpSettingsPage();
 
 ?>
