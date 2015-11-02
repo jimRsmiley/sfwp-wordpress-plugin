@@ -11,6 +11,13 @@ Version: 0.1
 
 class SfWpSettingsPage
 {
+
+    private $dup_url_key        = "sfwp_duplicate_report_url";
+    private $dup_last_run_key   = "sfwp_duplicate_report_last_run";
+
+    private $sync_url_kry       = "sfwp_sync_rep_url";
+    private $sync_last_run_key  = "sfwp_sync_rep_last_run";
+
     /**
      * Holds the values to be used in the fields callbacks
      */
@@ -40,13 +47,18 @@ class SfWpSettingsPage
         );
     }
 
+    public function _get_options() {
+        return get_option('sfwp_sf_credentials');
+    }
+
     /**
      * Options page callback
      */
     public function create_admin_page()
     {
         // Set class property
-        $this->options = get_option( 'sfwp_sf_credentials' );
+        $this->options = $this->_get_options();
+
         ?>
         <div class="wrap">
             <h2>My Settings</h2>           
@@ -75,7 +87,7 @@ class SfWpSettingsPage
 
         add_settings_section(
             'setting_section_id', // ID
-            'My Custom Settings', // Title
+            'SfWP Settings', // Title
             array( $this, 'print_section_info' ), // Callback
             'sfwp-setting-admin' // Page
         );  
@@ -120,6 +132,12 @@ class SfWpSettingsPage
      */
     public function print_section_info()
     {
+        printf("<p>The last duplicate report was run on %s. <a href='%s'>Click here to view it</a></p>",
+            $this->options[$this->dup_last_run_key],$this->options[$this->dup_url_key]);
+
+        printf("<p>The last sync report was run on %s. <a href='%s'>Click here to view it</a></p>",
+            $this->options[$this->sync_last_run_key],$this->options[$this->sync_url_key]);
+
         print 'Enter your settings below:';
     }
 
