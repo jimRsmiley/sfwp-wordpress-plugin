@@ -15,7 +15,7 @@ class SfWpSettingsPage
     private $dup_url_key        = "sfwp_duplicate_report_url";
     private $dup_last_run_key   = "sfwp_duplicate_report_last_run";
 
-    private $sync_url_kry       = "sfwp_sync_rep_url";
+    private $sync_url_key       = "sfwp_sync_rep_url";
     private $sync_last_run_key  = "sfwp_sync_rep_last_run";
 
     /**
